@@ -1,23 +1,181 @@
- body { background-color: #f0f2f5; }
-        .mobile-content-padding { padding-bottom: 60px !important; }
-        .slick-prev:before, .slick-next:before { color: black !important; }
-        .promo-carousel img { border-radius: 8px; }
-        .tenor-buttons-container { display: flex; flex-wrap: wrap; gap: 8px; }
-        .thumbnail-gallery { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
-        .thumbnail { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.2s; }
-        .thumbnail:hover { border-color: #ddd; }
-        .active-thumbnail { border-color: #00B5AD; }
-       .loader {
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #333;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  margin-top: 20px;
-  animation: spin 1s linear infinite;
+/* Pastikan gaya-gaya ini ada di style.css Anda */
+body { background-color: #f0f2f5; } /* Sudah ada, pastikan tidak ada konflik */
+.mobile-content-padding { padding-bottom: 60px !important; } /* Sudah ada */
+.slick-prev:before, .slick-next:before { color: black !important; } /* Sudah ada */
+.promo-carousel img { border-radius: 8px; } /* Sudah ada */
+.tenor-buttons-container { display: flex; flex-wrap: wrap; gap: 8px; } /* Sudah ada */
+.thumbnail-gallery { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; } /* Sudah ada */
+.thumbnail { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.2s; } /* Sudah ada */
+.thumbnail:hover { border-color: #ddd; } /* Sudah ada */
+.active-thumbnail { border-color: #00B5AD; } /* Sudah ada */
+.loader { /* Sudah ada */
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #333;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-top: 20px;
+    animation: spin 1s linear infinite;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+@keyframes spin { /* Sudah ada */
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Gaya Baru / Penting yang HARUS ada untuk tampilan yang benar */
+.top-bar { /* Untuk header konsumen: search + cart */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+    background-color: #fff; /* Tambahkan background agar terlihat jelas */
+    border-bottom: 1px solid #eee; /* Sedikit pemisah */
+    padding-top: 10px; /* Sedikit padding atas */
+    padding-bottom: 10px; /* Sedikit padding bawah */
+    position: sticky; /* Agar tetap di atas saat scroll */
+    top: 0;
+    z-index: 999; /* Pastikan di atas konten lain */
+}
+.search-input-container { /* Untuk input search di header */
+    flex-grow: 1;
+}
+.cart-icon-container { /* Untuk ikon keranjang di header */
+    position: relative;
+    cursor: pointer;
+    font-size: 1.8em; /* Ukuran ikon keranjang */
+    color: #555;
+}
+.cart-label { /* Badge untuk jumlah item di keranjang */
+    position: absolute;
+    top: -8px; /* Sesuaikan posisi vertikal */
+    right: -8px; /* Sesuaikan posisi horizontal */
+    background-color: #db2828; /* Warna merah */
+    color: white;
+    border-radius: 50%;
+    padding: 0.3em 0.5em; /* Ukuran badge */
+    font-size: 0.7em;
+    line-height: 1;
+    min-width: 1.5em; /* Pastikan lingkaran cukup besar untuk 2 digit */
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    z-index: 10; /* Pastikan di atas ikon */
+}
+
+/* Gaya untuk Promo Card (full-width) */
+.promo-full-card {
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer; /* Menandakan bisa diklik */
+    transition: transform 0.2s ease-in-out;
+}
+.promo-full-card:hover {
+    transform: translateY(-3px);
+}
+.promo-full-card .image img {
+    width: 100%;
+    height: 250px; /* Tinggi gambar promo yang lebih besar */
+    object-fit: cover;
+}
+.promo-full-card .content {
+    padding: 1rem;
+}
+.promo-full-card .header {
+    font-size: 1.4em;
+    margin-bottom: 0.5rem;
+}
+.promo-full-card .meta {
+    color: #777;
+    font-size: 0.9em;
+    margin-bottom: 0.5rem;
+}
+.promo-full-card .description {
+    font-size: 1.1em;
+    line-height: 1.5;
+    color: #f05d40; /* Warna cicilan */
+    font-weight: bold;
+}
+
+/* Gaya untuk Product Detail Page Header (panah kembali) */
+.detail-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-left: 0.5rem; /* Sesuaikan padding */
+}
+.detail-header .icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* Gaya untuk Action Bar di Detail Produk */
+.action-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-top: 1px solid #ddd;
+    padding: 10px;
+    display: flex;
+    z-index: 1000;
+    justify-content: space-around;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.1); /* Tambahkan bayangan ke atas */
+}
+
+/* Gaya untuk Status Order Grid di Profil Konsumen */
+.order-status-grid .column {
+    text-align: center;
+    position: relative;
+    padding: 1em 0.5em; /* Sesuaikan padding */
+}
+.status-label { /* Badge untuk jumlah order di ikon status */
+    position: absolute;
+    top: 0px; /* Sesuaikan posisi vertikal */
+    right: 0px; /* Sesuaikan posisi horizontal */
+    background-color: #db2828; /* Warna merah */
+    color: white;
+    border-radius: 50%;
+    padding: 0.3em 0.5em;
+    font-size: 0.7em;
+    line-height: 1;
+    min-width: 1.5em;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+/* Pastikan gambar carousel utama juga responsif */
+.image-carousel .carousel-image {
+    width: 100%;
+    height: 200px; /* Tinggi tetap atau bisa auto */
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Rekomendasi carousel card styling */
+.small-product-card {
+    width: 120px !important; /* Fixed width for small cards */
+    margin: 5px; /* Spacing between cards */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    border-radius: 5px;
+    overflow: hidden;
+}
+.small-product-card .image img {
+    width: 100%;
+    height: 80px; /* Smaller image height */
+    object-fit: cover;
+}
+.small-product-card .content {
+    padding: 0.5rem;
+    text-align: center;
+}
+.small-product-card .header {
+    font-size: 0.8em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
